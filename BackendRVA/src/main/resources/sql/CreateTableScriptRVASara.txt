@@ -1,0 +1,61 @@
+DROP TABLE IF EXISTS proizvodjac CASCADE;
+DROP TABLE IF EXISTS proizvod CASCADE;
+DROP TABLE IF EXISTS stavka_racuna CASCADE;
+DROP TABLE IF EXISTS racun CASCADE;
+drop sequence if exists proizvodjac_seq;
+drop sequence if exists proizvod_seq;
+drop sequence if exists stavka_racuna_seq;
+drop sequence if exists racun_seq;
+
+
+CREATE TABLE proizvodjac (
+	id integer not null,
+    naziv varchar(50) not null,
+    adresa varchar(200) not null,
+	kontakt varchar(100) not null
+);
+
+CREATE TABLE proizvod (
+	id integer not null,
+    naziv varchar(50) not null,
+    proizvodjac integer not null
+);
+
+CREATE TABLE stavka_racuna (
+	id integer not null,
+    redni_broj integer not null,
+	kolicina numeric not null,
+	jedinica_mere varchar,
+	cena numeric not null,
+	racun integer not null,
+	proizvod integer not null
+);
+
+CREATE TABLE racun (
+	id integer not null,
+    datum date not null,
+    nacin_placanja varchar (200) not null
+);
+
+ALTER TABLE proizvodjac ADD CONSTRAINT pk_proizvodjac PRIMARY KEY(id);
+ALTER TABLE proizvod ADD CONSTRAINT pk_proizvod PRIMARY KEY(id);
+ALTER TABLE stavka_racuna ADD CONSTRAINT pk_stavka_racuna PRIMARY KEY(id);
+ALTER TABLE racun ADD CONSTRAINT pk_racun PRIMARY KEY(id);
+
+ALTER TABLE proizvod ADD CONSTRAINT fk_proizvod_proizvodjac FOREIGN KEY(proizvodjac) REFERENCES proizvodjac (id);
+ALTER TABLE stavka_racuna ADD CONSTRAINT fk_stavka_racuna_racun FOREIGN KEY (racun) REFERENCES racun (id);
+ALTER TABLE stavka_racuna ADD CONSTRAINT fk_stavka_racuna_proizvod FOREIGN KEY (proizvod) REFERENCES proizvod (id);
+
+CREATE INDEX idxpk_proizvodjac ON proizvodjac(id);
+CREATE INDEX idxpk_proizvod ON proizvod(id);
+CREATE INDEX idxpk_stavka_racuna ON stavka_racuna(id);
+CREATE INDEX idxpk_racun ON racun(id);
+
+CREATE INDEX idxfk_proizvod_proizvodjac on proizvod(proizvodjac);
+CREATE INDEX idxfk_stavka_racuna_racun on stavka_racuna(racun);
+CREATE INDEX idxfk_stavka_racuna_proizvod on stavka_racuna(proizvod);
+
+create sequence proizvodjac_seq increment 1;
+create sequence proizvod_seq increment 1;
+create sequence stavka_racuna_seq increment 1;
+create sequence racun_seq increment 1;

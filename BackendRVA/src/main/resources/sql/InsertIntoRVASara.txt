@@ -1,0 +1,53 @@
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čaj od kamilice 100g',1);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čaj od mente 100g',1);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Zeleni čaj 100g',1);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Mlečna čokolada 150g',2);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čokoladni napitak 250g',2);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Musli 300g',2);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Kokosija supa 20g',3);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Goveđa supa 20g',3);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čorba od pečuraka 30g',3);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Puding od vanile 50g',4);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Šećer u prahu',4);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Prašak za pecivo 10g',4);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čaj sa jagodom i vanilom 100g',5);
+	insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Čaj od žalfije 100g',5);
+insert into proizvod("id","naziv","proizvodjac")
+	values(nextval('proizvod_seq'),'Crni čaj 100g',5);
+
+
+
+insert into racun("id", "datum", "nacin_placanja")
+	values(nextval('racun_seq'),to_date('12.03.2019.','dd.mm.yyyy.'), 'Gotovina');
+insert into racun("id", "datum", "nacin_placanja")
+	values(nextval('racun_seq'),to_date('01.02.2019.','dd.mm.yyyy.'), 'Kartica');
+insert into racun("id", "datum", "nacin_placanja")
+	values(nextval('racun_seq'),to_date('21.03.2019.','dd.mm.yyyy.'), 'Gotovina');
+insert into racun("id", "datum", "nacin_placanja")
+	values(nextval('racun_seq'),to_date('22.03.2019.','dd.mm.yyyy.'), 'Kartica');
+
+
+insert into stavka_racuna("id", "redni_broj", "kolicina", "jedinica_mere", "cena", "racun", "proizvod")
+    values(nextval('stavka_racuna_seq'), 1, 12, 'Komad', 800,1,1);
+insert into stavka_racuna("id", "redni_broj", "kolicina", "jedinica_mere", "cena", "racun", "proizvod")
+    values(nextval('stavka_racuna_seq'), 1, 10, 'Komad', 1200,2,5);
+insert into stavka_racuna("id", "redni_broj", "kolicina", "jedinica_mere", "cena", "racun", "proizvod")
+    values(nextval('stavka_racuna_seq'), 2, 20, 'Kg', 2300,2,4);
+insert into stavka_racuna("id", "redni_broj", "kolicina", "jedinica_mere", "cena", "racun", "proizvod")
+    values(nextval('stavka_racuna_seq'), 2, 15, 'Kg', 1000,3,9);
+insert into stavka_racuna("id", "redni_broj", "kolicina", "jedinica_mere", "cena", "racun", "proizvod")
+    values(nextval('stavka_racuna_seq'), 3, 5, 'Komad', 500,1,7);
